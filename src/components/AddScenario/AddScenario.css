@@ -1,0 +1,47 @@
+.scenario{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.addscenarion{
+    width: 500px;
+    overflow: hidden;
+}
+
+.flex-container{
+    display: flex;
+    background-color: rgba(56, 55, 55, 0.425);
+    padding: 20px 50px;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+
+.flex-item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    color: #fff; 
+}
+
+input{
+    background-color: #000;
+    border: 1px solid rgba(56, 55, 55, 0.425);
+    font-size: 16px;
+    padding: 7px 5px;
+    border-radius: 5px;
+    color: gray;
+}
+
+button{
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.button-section{
+    display: flex;
+    gap: 15px;
+}
+
