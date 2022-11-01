@@ -1,23 +1,41 @@
 import React,{useState} from 'react';
+import { useEffect } from 'react';
 import './AddScenario.css';
 
 export const AddScenario = () => {
+
+    const [scenarios,setScenarios] = useState([]);
+
+    useEffect(() => {
+        const data =JSON.parse(localStorage.getItem("scenarios"));
+        setScenarios(data);
+    },[]);
+
     const [scenarioName,setScenarioName] = useState("");
     const [scenarioTime,setScenarioTime] = useState("");
+  
 
     const submitHandler = () => {
         const scenarioData = {
+            id:scenarios.length + 1 || 1,
             scenarioName,
-            scenarioTime
+            scenarioTime,
+            vehicles:[]
         }
-        console.log(scenarioData,"data")
+        scenarios.push(scenarioData);
+        localStorage.setItem("scenarios",JSON.stringify(scenarios));
+        console.log(scenarioData,"data");
     }
+
+  
+
+    console.log(scenarios.length,"scenarios");
 
     const resetHandler = () => {
         setScenarioName("");
         setScenarioTime("");
     }
-    
+
   return (
     <section className='addscenarion'>
         <div className='text'>Scenario / add</div>

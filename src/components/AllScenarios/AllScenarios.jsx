@@ -14,7 +14,6 @@ export const AllScenarios = () => {
         console.log(data);
     },[])
 
-    console.log(scenarios,"scen")
     // const scenarios = [{id:1,scenarioName:"Test Scenario",scenarioTime:"5s",vehicles:[{vehicleName:"bus"}]},{id:1,scenarioName:"Test Scenario",scenarioTime:"2s",vehicles:[{vehicleName:"bus"}]}]
   return (
     <section className='all-scenarios-section'>

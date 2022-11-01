@@ -1,0 +1,27 @@
+.add-vehicle-content{
+    margin: 20px 0;
+    background-color: rgba(56, 55, 55, 0.425);
+    padding: 20px 50px;
+}
+.vehicle-container{
+    display: flex;
+    justify-content: space-between;
+}
+.container-item{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 220px;
+}
+select{
+    background-color: #000;
+    border: 1px solid rgba(56, 55, 55, 0.425);
+    font-size: 16px;
+    padding: 7px 5px;
+    border-radius: 5px;
+    color: gray;
+}
+.button-container{
+    display: flex;
+    gap: 20px;
+}
