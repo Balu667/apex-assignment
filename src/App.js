@@ -6,8 +6,14 @@ import { AddScenario } from './components/AddScenario/AddScenario';
 import { AddVehicle } from './components/AddVehicle/AddVehicle';
 import { AllScenarios } from './components/AllScenarios/AllScenarios';
 import { Sidebar } from './components/Sidebar/Sidebar';
+import { useEffect } from 'react';
 
 function App() {
+  const scenarios = [{id:1,scenarioName:"Test Scenario",scenarioTime:"5s",vehicles:[{vehicleName:"bus"}]},{id:1,scenarioName:"Test Scenario",scenarioTime:"2s",vehicles:[{vehicleName:"bus"}]}]
+
+  useEffect(() => {
+    localStorage.setItem("scenarios",JSON.stringify(scenarios));
+  },[])
   return (
     <div className="App">
       <section className='sidebar'>

@@ -1,0 +1,32 @@
+.all-scenarios-section{
+    width: 100%;
+}
+.all-scenarios-header{
+    display: flex;
+    justify-content: space-between;
+}
+.header-link{
+    padding: 5px 10px;
+    text-decoration: none; 
+    background-color: #fff;
+    color: #000;
+}
+.row-container{
+    display: flex;
+    gap: 10px;
+}
+button{
+    border: none;
+}
+.all-scenarios-content{
+    margin: 30px 0;
+}
+table{
+    color: #fff;
+}
+td,th{
+    padding: 5px 10px;
+}
+td{
+    text-align: center;
+}
