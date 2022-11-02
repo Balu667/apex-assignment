@@ -36,6 +36,29 @@ export const Home = () => {
   const generateSquareBoxs = (arr) => {
     return <div className='horizontal'>{arr.map((item, i) => <div className='square'></div>)}</div>
   }
+
+  const simulationHandler = (e) => {
+    const vehiclesDom = document.querySelectorAll(".vehicle");
+
+    vehiclesDom.forEach((item) => {
+      const vehicle = vehicles.filter(vehicle => vehicle.id === +item.id)[0];
+      console.log(vehicle,"vwhicle");
+      console.log("dir",vehicle.direction);
+      switch(vehicle.direction){
+        case "Upwards": item.style.top = `${vehicle.positionY - vehicle.speed * 70}px`;
+        break;
+        case "Towards": item.style.left = `${vehicle.positionX + vehicle.speed * 70}px`;
+        break;
+        case "Downwards": item.style.top = `${vehicle.positionY - vehicle.speed * 70}px`;
+        break;
+        case "Towards": item.style.left = `${vehicle.positionX + vehicle.speed * 70}px`;
+        break;
+      }
+    })
+    
+    console.log(vehiclesDom,"scenarios");
+
+  }
   return (
     <section className='home-section'>
       <div className='container-item'>
@@ -75,7 +98,7 @@ export const Home = () => {
         </table>
       </div>
       <div className='home-buttons'>
-        <button>Start Simulation</button>
+        <button onClick={simulationHandler}>Start Simulation</button>
         <button>Stop Simulation</button>
       </div>
       <div className='graph-container'>
@@ -83,10 +106,9 @@ export const Home = () => {
           {arr.map((item) => generateSquareBoxs([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]))}
           {vehicles.map((item, i) => {
           console.log(item)
-          return <div style={{position:"absolute",top:`${item.positionY}px`,left:`${item.positionX}px`}} className='vehicle' key={item.id}>{item.id}</div>
+          return <div style={{position:"absolute",top:`${item.positionY}px`,left:`${item.positionX}px`}} className='vehicle' id={item.id} key={item.id}>{item.id}</div>
         })}
         </div>
-       
       </div>
     </section>
   )
