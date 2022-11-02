@@ -25,3 +25,11 @@ select{
     display: flex;
     gap: 20px;
 }
+.error{
+    background-color: red;
+    color: #fff;
+    font-size: 12px;
+    width: fit-content;
+    padding: 2px 5px;
+    border-radius: 2px;
+}

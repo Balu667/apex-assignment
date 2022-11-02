@@ -1,10 +1,12 @@
 import React,{useState} from 'react';
 import { useEffect } from 'react';
 import './AddScenario.css';
+import { useNavigate } from 'react-router';
 
 export const AddScenario = () => {
 
     const [scenarios,setScenarios] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const data =JSON.parse(localStorage.getItem("scenarios"));
@@ -17,19 +19,19 @@ export const AddScenario = () => {
 
     const submitHandler = () => {
         const scenarioData = {
-            id:scenarios.length + 1 || 1,
+            id:  scenarios ? scenarios.length + 1 || 1 : 1,
             scenarioName,
-            scenarioTime,
+            scenarioTime: scenarioTime + "s",
             vehicles:[]
         }
-        scenarios.push(scenarioData);
-        localStorage.setItem("scenarios",JSON.stringify(scenarios));
-        console.log(scenarioData,"data");
+        if(scenarios){
+            scenarios.push(scenarioData);
+            localStorage.setItem("scenarios",JSON.stringify(scenarios));
+        }else{
+            localStorage.setItem("scenarios",JSON.stringify([scenarioData]));
+        }  
     }
 
-  
-
-    console.log(scenarios.length,"scenarios");
 
     const resetHandler = () => {
         setScenarioName("");
@@ -54,7 +56,7 @@ export const AddScenario = () => {
             <div className='button-section'>
                 <button onClick={submitHandler}>Add</button>
                 <button onClick={resetHandler}>Reset</button>
-                <button>Go Back</button>
+                <button onClick={() => navigate(-1)}>Go Back</button>
             </div>
         </div>
     </section>

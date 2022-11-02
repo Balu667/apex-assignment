@@ -1,0 +1,46 @@
+select{
+    width: 200px;
+}
+table{
+    width: 100%;
+}
+.home-content{
+    margin: 20px 0;
+}
+.home-buttons{
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+}
+.graph{
+    width: 100%;
+    border: 1px solid green;
+    margin-top: 20px;
+    
+}
+.square{
+    height: 70px;
+    width: 70px;
+    border: 1px dotted rgb(78, 184, 78);
+ 
+}
+
+.horizontal{
+    display: flex;
+   
+} 
+.graph{
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+.vehicle{
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

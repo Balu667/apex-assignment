@@ -1,43 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import './AddVehicle.css';
+import { useNavigate } from 'react-router';
 
 export const AddVehicle = () => {
 
+    const navigate = useNavigate();
     const [scenarios, setScenarios] = useState([]);
-    const [vehicleName,setVehicleName] = useState("");
-    const [speed,setSpeed] = useState("");
-    const [positionX,setPositionX] = useState("");
-    const [positionY,setPositionY] = useState("");
-    const [direction,setDirection] = useState("");
-    const [scenarioName,setScenarioName] = useState("");
+    const [vehicleName, setVehicleName] = useState("");
+    const [speed, setSpeed] = useState("");
+    const [positionX, setPositionX] = useState("");
+    const [positionY, setPositionY] = useState("");
+    const [direction, setDirection] = useState("");
+    const [scenarioName, setScenarioName] = useState("");
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem("scenarios"));
         setScenarios(data);
     }, []);
 
-    console.log(scenarios, "scenarios");
-
     const submitHandler = () => {
-        const data = {
-            vehicleName,
-            speed,
-            positionX,
-            positionY,
-            direction,
-            scenarioName
-        }
-
-        scenarios.forEach((item,i) => {
-            if(item.scenarioName === data.scenarioName){
-                console.log(item.vehicles)
-                item.vehicles.push(data);
-                localStorage.setItem("scenarios",JSON.stringify(scenarios));
-                console.log(scenarios,"for")
+        scenarios.forEach((item, i) => {
+            if (item.scenarioName === scenarioName) {
+                const data = {
+                    id: item.vehicles.length + 1,
+                    vehicleName,
+                    speed,
+                    positionX,
+                    positionY,
+                    direction,
+                    scenarioName
+                }
+                if(positionX < 800 && positionX > 0){
+                    item.vehicles.push(data);
+                    localStorage.setItem("scenarios", JSON.stringify(scenarios));
+                    console.log(scenarios, "for")
+                }
+                
             }
         })
 
-        console.log(scenarios[scenarioName],"data");
+        console.log(scenarios[scenarioName], "data");
     }
     return (
         <section className='add-vehicle-section'>
@@ -47,9 +49,9 @@ export const AddVehicle = () => {
                 <div className='vehicle-container'>
                     <div className='container-item'>
                         <label>Scenario List</label>
-                        <select onChange={(e) => setScenarioName(e.target.value)} name="cars" id="cars" placeholder='Select Scenario'>
+                        <select onChange={(e) => setScenarioName(e.target.value)} placeholder='Select Scenario'>
                             <option value="none" selected disabled hidden>Select Scenario</option>
-                            {scenarios && scenarios.length > 0 && scenarios.map((item) => <option>{item.scenarioName}</option>)}
+                            {scenarios && scenarios.length > 0 && scenarios.map((item, i) => <option key={i + "p"}>{item.scenarioName}</option>)}
                         </select>
                     </div>
                     <div className='container-item'>
@@ -65,6 +67,7 @@ export const AddVehicle = () => {
                     <div className='container-item'>
                         <label>Position X</label>
                         <input onChange={(e) => setPositionX(e.target.value)} value={positionX} type="number" />
+                        {(positionX < 0 || positionX > 800)   && <div className='error'>Position X should not be &#62; 800 and 	&#60; 0 </div> }
                     </div>
                     <div className='container-item'>
                         <label>Position Y</label>
@@ -85,7 +88,7 @@ export const AddVehicle = () => {
             <div className='button-container'>
                 <button onClick={submitHandler}>Add</button>
                 <button>Reset</button>
-                <button>Go Back</button>
+                <button onClick={() => navigate(-1)}>Go Back</button>
             </div>
         </section>
     )
