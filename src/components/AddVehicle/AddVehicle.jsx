@@ -20,8 +20,9 @@ export const AddVehicle = () => {
   const submitHandler = () => {
     scenarios.forEach((item, i) => {
       if (item.scenarioName === scenarioName) {
+
         const data = {
-          id: item.vehicles.length + 1,
+          id: item.vehicles.length > 0 ? item.vehicles[item.vehicles.length - 1].id + 1 : 1,
           vehicleName,
           speed,
           positionX,

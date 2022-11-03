@@ -15,11 +15,11 @@ export const AddScenario = () => {
 
     const [scenarioName,setScenarioName] = useState("");
     const [scenarioTime,setScenarioTime] = useState("");
-  
+    
 
     const submitHandler = () => {
         const scenarioData = {
-            id:  scenarios ? scenarios.length + 1 || 1 : 1,
+            id:  scenarios ? scenarios[scenarios.length - 1].id + 1 || 1 : 1,
             scenarioName,
             scenarioTime: scenarioTime + "s",
             vehicles:[]
